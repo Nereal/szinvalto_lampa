@@ -6,7 +6,7 @@ float bx;
 float sgy;
 float r;
 boolean b;
-byte c;
+color c;
 
 PImage kep; 
 
@@ -24,7 +24,7 @@ void setup () {
   y=height-height/15;
   b=false;
   kep = loadImage("hatter.png");
-  c=1;
+  c=color(250, 50, 50);
 }
 
 void mouseClicked() {
@@ -37,13 +37,13 @@ void mouseClicked() {
   }
 
   if ((abs(rx-mouseX)<r)&&(abs(sgy-mouseY)<r)&&(b)) {
-    c=1;
+    c=color(250, 50, 50);
   }
   if ((abs(gx-mouseX)<r)&&(abs(sgy-mouseY)<r)&&(b)) {
-    c=2;
+    c=color(50, 250, 50);
   }
   if ((abs(bx-mouseX)<r)&&(abs(sgy-mouseY)<r)&&(b)) {
-    c=3;
+    c=color(50, 50, 250);
   }
 }
 
@@ -51,14 +51,8 @@ void draw() {
   background(0, 0, 0);
   image(kep, width/2-75, height-270, 150, 151);
   noStroke();
-  if ((b)&&(c==1)) {
-    feny(color(250, 50, 50));
-  }
-  if ((b)&&(c==2)) {
-    feny(color(50, 250, 50));
-  }
-  if ((b)&&(c==3)) {
-    feny(color(50, 50, 250));
+  if (b) {
+    feny(c);
   }
   if (!b) {
     background(0, 0, 0);
